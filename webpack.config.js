@@ -104,6 +104,9 @@ const path = require('path');
                 ],
                 resolve: {
                   modules: [path.resolve(__dirname, 'node_modules'), 'node_modules']
+                },
+                experiments: {
+                  topLevelAwait: true
                 }
               };
               
