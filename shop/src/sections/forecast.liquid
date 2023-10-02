@@ -1,0 +1,136 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} forecast-section" style="background-color: #161736;">
+  <div class="page-width page-width--narrow section-{{ section.id }}-padding">
+    <h2 class="title title-wrapper--no-top-margin inline-richtext text-blue-700 text-4xl">
+      Ski Resort Forecast
+    </h2>
+    <forecast-section>
+      <p>Find my resort</p>
+      <input id="search-resort" type="text" name="resort">
+      <h4></h4>
+      <p id="region"></p>
+      <ul id="elevations">
+        <li>
+          <label>Top lift elevation:</label> 
+          <span id="elevation-top"></span>
+        </li> |
+        <li>
+          <label>Middle lift elevation:</label>
+          <span id="elevation-middle"></span>
+        </li> |
+        <li>
+          <label>Bottom lift elevation:</label>
+          <span id="elevation-bottom"></span>
+        </li> |
+        <li><a id="website" target="_blank">Website</a></li> |
+        <li><a id="map" target="_blank">Open in Maps</a></li>
+      </ul>
+      <div class="forecast-today">
+        <div class="today-details">
+          <p id="today-weekday"></p>
+          <p id="today-weather"></p>
+          <p>
+            <span id="rain-thickness"></span> | <span id="snow-thickness"></span>
+          </p>
+        </div>
+        <div class="temperatures">
+          <div id="temp-low">
+          </div>
+          <div id="temp-high">
+          </div>
+        </div>
+      </div>
+      <div class="forecast-succeeding">
+        <div>
+          <h5>Forecast (next 3 days)</h5>
+          <p id="forecast-days-3"></p>
+        </div>
+        <div>
+          <h5>Forecast (next 4-6 days)</h5>
+          <p id="forecast-days-4"></p>
+        </div>
+      </div>
+    </forecast-section>
+  </div>
+</div>
+
+<script src="{{ 'forecast.min.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Forecast",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.all.colors.accent_1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.all.colors.accent_2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.all.colors.background_1.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.all.colors.background_2.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.all.colors.inverse.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "presets": [
+    {
+      "name": "Forecast"
+    }
+  ]
+}
+{% endschema %}
