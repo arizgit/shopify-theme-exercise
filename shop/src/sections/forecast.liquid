@@ -1,3 +1,5 @@
+{{ 'section-forecast.min.css' | asset_url | stylesheet_tag }}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: calc({{ section.settings.padding_top }}px * 0.75);
@@ -11,7 +13,8 @@
     }
   }
 {%- endstyle -%}
-<div class="color-{{ section.settings.color_scheme }} forecast-section" style="background-color: #161736;">
+
+<div class="color-{{ section.settings.color_scheme }} forecast-section">
   <div class="page-width page-width--narrow section-{{ section.id }}-padding">
     <h2 class="title title-wrapper--no-top-margin inline-richtext text-blue-700 text-4xl">
       Ski Resort Forecast
@@ -25,16 +28,20 @@
         <li>
           <label>Top lift elevation:</label> 
           <span id="elevation-top"></span>
-        </li> |
+        </li>
+        <li class="divider">|</li>
         <li>
           <label>Middle lift elevation:</label>
           <span id="elevation-middle"></span>
-        </li> |
+        </li>
+        <li class="divider">|</li>
         <li>
           <label>Bottom lift elevation:</label>
           <span id="elevation-bottom"></span>
-        </li> |
-        <li><a id="website" target="_blank">Website</a></li> |
+        </li>
+        <li class="divider">|</li>
+        <li><a id="website" target="_blank">Website</a></li>
+        <li class="divider">|</li>
         <li><a id="map" target="_blank">Open in Maps</a></li>
       </ul>
       <div class="forecast-today">
@@ -42,7 +49,8 @@
           <p id="today-weekday"></p>
           <p id="today-weather"></p>
           <p>
-            <span id="rain-thickness"></span> | <span id="snow-thickness"></span>
+            <span id="rain-thickness"></span> | 
+            <span id="snow-thickness"></span>
           </p>
         </div>
         <div class="temperatures">

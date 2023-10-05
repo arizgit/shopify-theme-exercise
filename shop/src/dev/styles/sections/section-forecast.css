@@ -1,0 +1,62 @@
+.forecast-section {
+  background-color: #161736;
+
+  a { color:inherit; }
+
+  #search-resort {
+    background-color:#676879;
+    width:400px;
+    border:none;
+    border-radius:4px;
+    padding:10px;
+    color:#fff;
+  }
+
+  #elevations {
+    list-style-type: none;
+    padding: 0;
+    font-size:9pt;
+    margin-bottom:30px;
+    li {
+      display: inline;
+      &.divider {
+        margin: 0 5px;
+      }
+    }
+  }
+
+  .temperatures div {
+    padding: 6px 15px;
+    border-radius:5px;
+    display: inline-block;
+    color:#000;
+    &#temp-high {
+      background-color:#19b6be;
+    }
+    &#temp-low {
+      background-color: #c0e8d3;
+    }
+  }
+  
+  .today-details{
+    text-transform: capitalize;
+    p {
+      margin-top:0;
+    }
+    #today-weekday {
+      font-weight:600;
+    }
+  }
+
+  .forecast-today { 
+    display: flex;
+    gap: 40px;
+  }
+
+  .forecast-succeeding {
+    display:flex;
+    gap: 25px;
+  }
+}
+
+
